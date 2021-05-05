@@ -169,8 +169,9 @@ while True:
     # NOTE: uncomment to use perceptual loos. Still WIP. You will need to define
     # the `ref_img_path` to use it. The image referenced will be the one 
     # used to condition the generation.
-    # perceptual_loss = compute_perceptual_loss(img, ref_img)
-    # loss = loss + perceptual_loss
+    if ref_img is not None:
+       perceptual_loss = compute_perceptual_loss(img, ref_img)
+       loss = loss + perceptual_loss
 
     optimizer.zero_grad()
     loss.backward()
